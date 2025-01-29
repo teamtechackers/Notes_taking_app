@@ -40,31 +40,29 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         String b = getIntent().getStringExtra("a");
         if (b != null) {
-            allnotes.setText(b);
             // ADD FUNCTIONALITY CODE
-            //if (b==a) {
             String titel = getIntent().getStringExtra("titel");
             String about = getIntent().getStringExtra("about");
             String date = getIntent().getStringExtra("date");
             RowModel rowModel1 = new RowModel(titel, about, date);
             arrayList.add(rowModel1);
             adapter.notifyItemInserted(arrayList.size() - 1);
-            // UPDATE FUNCTIONALITY CODE
-            String updated_titel = getIntent().getStringExtra("updated_titel");
-            String updated_about = getIntent().getStringExtra("updated_about");
-            String updated_date = getIntent().getStringExtra("updated_date");
-            int position = getIntent().getIntExtra("position",-1);
-            if (position != -1 && position < arrayList.size()) {
-                RowModel updated_items = arrayList.get(position);
-                updated_items.titel=updated_titel;
-                updated_items.about = updated_about;
-                updated_items.date = updated_date;
-                adapter.notifyItemChanged(position);
 
             }
+        // UPDATE FUNCTIONALITY CODE
+        String updated_titel = getIntent().getStringExtra("updated_titel");
+        String updated_about = getIntent().getStringExtra("updated_about");
+        String updated_date = getIntent().getStringExtra("updated_date");
+        int position = getIntent().getIntExtra("position",-1);
+        if (position != -1 && position < arrayList.size()) {
+            RowModel updated_items = arrayList.get(position);
+            updated_items.titel=updated_titel;
+            updated_items.about = updated_about;
+            updated_items.date = updated_date;
+            adapter.notifyItemChanged(position);
+
         }
 
 
