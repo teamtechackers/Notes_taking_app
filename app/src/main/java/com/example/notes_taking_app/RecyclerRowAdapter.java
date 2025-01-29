@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,12 +19,12 @@ import java.util.ArrayList;
 public class RecyclerRowAdapter extends RecyclerView.Adapter<RecyclerRowAdapter.ViewHolder> {
     Context context;
 
-    public RecyclerRowAdapter(Context context, ArrayList<Row_Model> arrayList) {
+    public RecyclerRowAdapter(Context context, ArrayList<RowModel> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
     }
 
-    ArrayList<Row_Model> arrayList;
+    ArrayList<RowModel> arrayList;
 
 
 
@@ -39,7 +38,7 @@ public class RecyclerRowAdapter extends RecyclerView.Adapter<RecyclerRowAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        final Row_Model dataPosition = arrayList.get(position);
+        final RowModel dataPosition = arrayList.get(position);
         holder.titel.setText(arrayList.get(position).titel);
         holder.about.setText(arrayList.get(position).about);
         holder.date.setText(arrayList.get(position).date);

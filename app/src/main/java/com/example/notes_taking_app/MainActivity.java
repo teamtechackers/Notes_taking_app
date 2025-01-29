@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -21,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     String a = String.valueOf(1);
     RecyclerRowAdapter adapter;
     TextView allnotes;
-    static ArrayList<Row_Model> arrayList = new ArrayList<>();
+    static ArrayList<RowModel> arrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         addbtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, add_item.class);
+                Intent intent = new Intent(MainActivity.this, AddItem.class);
                startActivity(intent);
             }
         });
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             String titel = getIntent().getStringExtra("titel");
             String about = getIntent().getStringExtra("about");
             String date = getIntent().getStringExtra("date");
-            Row_Model rowModel1 = new Row_Model(titel, about, date);
+            RowModel rowModel1 = new RowModel(titel, about, date);
             arrayList.add(rowModel1);
             adapter.notifyItemInserted(arrayList.size() - 1);
          // UPDATE FUNCTIONALITY CODE
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             String updated_date = getIntent().getStringExtra("updated_date");
             int position = getIntent().getIntExtra("position",-1);
             if (position != -1 && position < arrayList.size()) {
-                Row_Model updated_items = arrayList.get(position);
+                RowModel updated_items = arrayList.get(position);
                 updated_items.titel=updated_titel;
                 updated_items.about = updated_about;
                 updated_items.date = updated_date;

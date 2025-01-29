@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class add_item extends AppCompatActivity {
+public class AddItem extends AppCompatActivity {
     EditText edt_titel, edt_about, edt_date;
    // public static final int a = 1;
     String a= String.valueOf(1);
@@ -31,7 +31,7 @@ public class add_item extends AppCompatActivity {
                 String about = edt_about.getText().toString();
                 String date = edt_date.getText().toString();
 
-                Intent intent = new Intent(add_item.this, MainActivity.class);
+                Intent intent = new Intent(AddItem.this, MainActivity.class);
 
                 if (!titel.isEmpty() && !about.isEmpty() && !date.isEmpty()) {
                     intent.putExtra("titel", titel);
@@ -40,7 +40,7 @@ public class add_item extends AppCompatActivity {
                     intent.putExtra("a",a);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(add_item.this, "Pleas Fill All Fileds", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddItem.this, "Pleas Fill All Fileds", Toast.LENGTH_SHORT).show();
                 }
             }
         });
