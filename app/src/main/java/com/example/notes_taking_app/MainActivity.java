@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     String a = String.valueOf(1);
     RecyclerRowAdapter adapter;
     TextView allnotes;
-    static ArrayList<RowModel> arrayList = new ArrayList<>();
+    public static ArrayList<RowModel> arrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,20 +37,22 @@ public class MainActivity extends AppCompatActivity {
         addbtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddItem.class);
-               startActivity(intent);
+                startActivity(intent);
             }
         });
+
         String b = getIntent().getStringExtra("a");
-        allnotes.setText(b);
-        // ADD FUNCTIONALITY CODE
-        //if (b==a) {
+        if (b != null) {
+            allnotes.setText(b);
+            // ADD FUNCTIONALITY CODE
+            //if (b==a) {
             String titel = getIntent().getStringExtra("titel");
             String about = getIntent().getStringExtra("about");
             String date = getIntent().getStringExtra("date");
             RowModel rowModel1 = new RowModel(titel, about, date);
             arrayList.add(rowModel1);
             adapter.notifyItemInserted(arrayList.size() - 1);
-         // UPDATE FUNCTIONALITY CODE
+            // UPDATE FUNCTIONALITY CODE
             String updated_titel = getIntent().getStringExtra("updated_titel");
             String updated_about = getIntent().getStringExtra("updated_about");
             String updated_date = getIntent().getStringExtra("updated_date");
@@ -63,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
                 adapter.notifyItemChanged(position);
 
             }
+        }
+
 
     }
-    }
+}
